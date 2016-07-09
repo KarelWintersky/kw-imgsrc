@@ -214,16 +214,14 @@ if (isset($_GET['lang']))
 	$_SESSION['RF']['language_file'] = 'lang/' . $lang . '.php';
 }
 
+	//KW: patch for disabling default tinymce
 if (isset($_GET['editor']))
 {
 	$editor = strip_tags($_GET['editor']);
 } else {
-	if($_GET['type']==0){
-		$editor=false;
-	} else {
-		$editor='tinymce';
-	}
+	$editor = false;
 }
+	//KW: patch for disabling default tinymce (end)
 
 if (!isset($_GET['field_id'])) $_GET['field_id'] = '';
 

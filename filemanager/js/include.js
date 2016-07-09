@@ -447,6 +447,7 @@ var encodeURL,show_animation,hide_animation,apply,apply_none,apply_img,apply_any
 				});
 			});
 
+            // KW+
 			grid.on('click', '.preview', function ()
 			{
 				var _this = $(this);
@@ -1905,10 +1906,11 @@ var encodeURL,show_animation,hide_animation,apply,apply_none,apply_img,apply_any
 			}
 			else
 			{
+                // KW Patch for lightbox image on LMB and copy url to clipboard
+                $('#full-img').attr('src', decodeURIComponent(url));
+                $('#previewLightbox').lightbox();
 
-
-                // KW Patch
-                url = url.substring(0, url.indexOf('?')); // http://stackoverflow.com/questions/5631384/remove-everything-after-a-certain-character
+                url = url.substring(0, url.indexOf('?'));
                 var targetId = "_hiddenCopyText_";
                 target = document.getElementById(targetId);
                 if (!target) {
@@ -1934,25 +1936,7 @@ var encodeURL,show_animation,hide_animation,apply,apply_none,apply_img,apply_any
                     currentFocus.focus();
                 }
                 target.textContent = "";
-
-                alert('URL copied to clipboard!!!');
                 // KW Patch end
-
-                // alert(" url: "+url);
-
-
-
-				/* if (parent.tinymce.majorVersion < 4)
-				{
-					parent.tinymce.activeEditor.windowManager.params.setUrl(url);
-					parent.tinymce.activeEditor.windowManager.close(parent.tinymce.activeEditor.windowManager.params.mce_window_id);
-				}
-				// tinymce 4.X
-				else
-				{
-					parent.tinymce.activeEditor.windowManager.getParams().setUrl(url);
-					parent.tinymce.activeEditor.windowManager.close();
-				} */
 			}
 		}
 	}
